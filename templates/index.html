@@ -1,1 +1,45 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>הזמנת נסיעה</title>
+</head>
+<body>
+    <h2>טופס הזמנת נסיעה</h2>
+    <form method="post">
+        <label>תאריך ושעה:</label>
+        <input type="datetime-local" name="datetime" required><br><br>
+        
+        <label>כתובת איסוף:</label>
+        <input type="text" name="pickup_address" required><br><br>
+        
+        <label>כתובת יעד:</label>
+        <input type="text" name="dropoff_address" required><br><br>
+        
+        <label>מספר טיסה (אם רלוונטי):</label>
+        <input type="text" name="flight_number"><br><br>
+        
+        <label>מספר נוסעים:</label>
+        <input type="number" name="passengers" required><br><br>
+        
+        <label>מספר מזוודות:</label>
+        <input type="number" name="suitcases" required><br><br>
+        
+        <label>מספר טלפון:</label>
+        <input type="tel" name="phone" required><br><br>
+        
+        <label>הערות:</label>
+        <textarea name="notes"></textarea><br><br>
+        
+        <button type="submit">שלח הזמנה</button>
+    </form>
 
+    <h3>הזמנות אחרונות</h3>
+    <ul>
+        {% for order in orders %}
+        <li>{{ order["תאריך ושעה"] }} - {{ order["כתובת איסוף"] }} -> {{ order["כתובת יעד"] }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
